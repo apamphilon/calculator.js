@@ -24,7 +24,7 @@ body {
 
 // app code
 .calculator {
-	max-width: 450px;
+	max-width: 350px;
 	margin: 40px auto;
 	box-sizing: border-box;
 	font-size: 50px;
@@ -46,11 +46,22 @@ body {
 }
 
 button {
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 	display: inline-block;
 	margin: 8px;
-	font-size: 30px;
+	font-size: 24px;
+  background: white;
+  border: 1px solid gainsboro;
+  outline: none;
+  &:active {
+    background: gainsboro;
+  }
+}
+
+#ce {
+  position: relative;
+  right: -273px;
 }
 
 p {
