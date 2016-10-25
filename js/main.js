@@ -1,5 +1,5 @@
 // delare variables
-var screen = $('#screen'), 
+var screen = $('#screen'),
     numberButton = $('.number'),
 	  buttonValue = '',
 	  query = [],
@@ -13,7 +13,7 @@ var screen = $('#screen'),
 function constructQuery() {
 	query.push(buttonValue);
 	queryStr = query.join('');
-	
+
 	setScreenValue();
 }
 
@@ -35,7 +35,7 @@ function calcTotal(a) {
 // get button value on click
 numberButton.on('click', function() {
 	buttonValue = $(this).data('val');
-	
+
    // construct query
    constructQuery();
 });
@@ -44,7 +44,7 @@ numberButton.on('click', function() {
 equalsButton.on('click', function() {
 	var result = calcTotal(queryStr);
 	screen.text(result);
-  
+
   if ( screen.text() === "37047734" ) {
     alert('hellhole');
   }
