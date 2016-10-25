@@ -7,6 +7,21 @@ html {
   box-sizing: inherit;
 }
 
+// typography
+@font-face {
+	font-family: 'Digital-7';
+	src: url('../fonts/Digital-7.eot');
+	src: url('../fonts/Digital-7.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Digital-7.woff') format('woff'),
+       url('../fonts/Digital-7.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+  font-family: 'Digital-7';
+}
+
 // app code
 .calculator {
 	max-width: 450px;
