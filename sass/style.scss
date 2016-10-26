@@ -37,6 +37,8 @@ body {
 	height: 90px;
 	padding: 0 20px;
 	text-align: right;
+  overflow: hidden;
+  overflow-x: auto;
 }
 
 .btn-wrapper {
