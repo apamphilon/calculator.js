@@ -47,6 +47,7 @@ equalsButton.on('click', function() {
 
   if ( screen.text() === "37047734" ) {
     alert('hellhole');
+    $('#calculator').addClass('rotated');
   }
 });
 
