@@ -24,10 +24,13 @@ body {
 
 // app code
 .calculator {
-	max-width: 350px;
+	max-width: 400px;
 	margin: 40px auto;
 	box-sizing: border-box;
 	font-size: 50px;
+  padding: 25px;
+  background: #3c3c3c;
+  border-radius: 4px;
 }
 
 .screen {
@@ -39,12 +42,14 @@ body {
 	text-align: right;
   overflow: hidden;
   overflow-x: auto;
+  background: #a6de54;
+  border-radius: 4px;
 }
 
 .btn-wrapper {
 	font-size: 0;
 	margin: -8px;
-	padding: 20px 0;
+	padding: 20px 0 0;
 }
 
 button {
@@ -53,9 +58,10 @@ button {
 	display: inline-block;
 	margin: 8px;
 	font-size: 24px;
-  background: white;
-  border: 1px solid gainsboro;
+  background: #9c9c9c;
   outline: none;
+  border-radius: 4px;
+  color: white;
   &:active {
     background: gainsboro;
   }
