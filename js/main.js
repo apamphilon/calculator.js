@@ -59,6 +59,7 @@ onOff.on('click', function() {
     main();
   } else {
     numberButton.unbind(); // unbind number click event
+    numberButton.unbind(); // unbind number click event
     screen.text(''); // reset screen text
     resetQuery(); // reset query
   }
@@ -71,36 +72,37 @@ function main() {
 
   // get button value on click
   numberButton.on('click', function() {
-    if ( onOff.hasClass('active') ) {
-      inputValue = $(this).data('val');
-      query.push(inputValue);
+    inputValue = $(this).data('val');
+    query.push(inputValue);
 
-      // construct query
-      constructQuery();
-    }
+    // construct query
+    constructQuery();
   });
 
   // get key pressed
   document.onkeypress = function(evt) {
-    evt = evt || window.event;
-    var charCode = evt.keyCode || evt.which;
-    var inputValue = String.fromCharCode(charCode);
+    // only run if powered on
+    if ( onOff.hasClass('active') ) {
+      evt = evt || window.event;
+      var charCode = evt.keyCode || evt.which;
+      var inputValue = String.fromCharCode(charCode);
 
-    // create an array of allowed keys
-    var allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*'];
+      // create an array of allowed keys
+      var allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*'];
 
-    // push to array if in allowedKeys
-    if ( allowedKeys.indexOf(inputValue) > -1 ) {
-      query.push(inputValue);
+      // push to array if in allowedKeys
+      if ( allowedKeys.indexOf(inputValue) > -1 ) {
+        query.push(inputValue);
+      }
+
+      // if is return or =
+      if ( charCode == '13' || charCode == '61' ) {
+        displayTotal();
+      }
+
+      // construct query
+      constructQuery();
     }
-
-    // if is return or =
-    if ( charCode == '13' || charCode == '61' ) {
-      displayTotal();
-    }
-
-    // construct query
-    constructQuery();
   };
 
   // equals button on click
