@@ -43,7 +43,12 @@ function displayTotal() {
 
 // reset query
 function resetQuery() {
-  screen.text('');
+  // if powered on
+  if ( onOff.hasClass('active') ) {
+    screen.text('0');
+  } else {
+    screen.text('');
+  }
   query = [];
 }
 
