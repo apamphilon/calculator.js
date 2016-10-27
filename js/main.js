@@ -49,12 +49,12 @@ function resetQuery() {
 
 // program
 // get button value on click
-  numberButton.on('click', function() {
-    inputValue = $(this).data('val');
-    query.push(inputValue);
+numberButton.on('click', function() {
+  inputValue = $(this).data('val');
+  query.push(inputValue);
 
-    // construct query
-    constructQuery();
+  // construct query
+  constructQuery();
 });
 
 // get key pressed
