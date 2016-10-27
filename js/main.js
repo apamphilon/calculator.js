@@ -11,8 +11,8 @@ var screen = $('#screen'),
 // functions
 // construct query
 function constructQuery() {
-	queryStr = query.join('');
-	setScreenValue();
+  queryStr = query.join('');
+  setScreenValue();
 }
 
 // set screen value
@@ -25,8 +25,8 @@ function setScreenValue() {
 
 // calculate total
 function calcTotal(a) {
-	evaluate = eval(a)
-	return evaluate;
+  evaluate = eval(a)
+  return evaluate;
 }
 
 // display total
@@ -49,12 +49,12 @@ function resetQuery() {
 
 // program
 // get button value on click
-numberButton.on('click', function() {
-	inputValue = $(this).data('val');
-	query.push(inputValue);
+  numberButton.on('click', function() {
+    inputValue = $(this).data('val');
+    query.push(inputValue);
 
-  // construct query
-  constructQuery();
+    // construct query
+    constructQuery();
 });
 
 // get key pressed
@@ -62,7 +62,6 @@ document.onkeypress = function(evt) {
   evt = evt || window.event;
   var charCode = evt.keyCode || evt.which;
   var inputValue = String.fromCharCode(charCode);
-
 
   // create an array of allowed keys
   var allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*'];
