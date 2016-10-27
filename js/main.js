@@ -47,10 +47,17 @@ function resetQuery() {
   query = [];
 }
 
+function powerDown() {
+  numberButton.unbind(); // unbind number click event
+  screen.text(''); // reset screen text
+  resetQuery(); // reset query
+}
+
 // program
 // on/off button
 onOff.on('click', function() {
   onOff.toggleClass('active');
+  // toggle screen background
   screen.toggleClass('active');
 
   // if powered on
@@ -58,13 +65,9 @@ onOff.on('click', function() {
     // run main program
     main();
   } else {
-    numberButton.unbind(); // unbind number click event
-    numberButton.unbind(); // unbind number click event
-    screen.text(''); // reset screen text
-    resetQuery(); // reset query
+    powerDown();
   }
 });
-
 
 function main() {
   // set screen text to 0
