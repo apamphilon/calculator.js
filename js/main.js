@@ -6,7 +6,8 @@ var screen = $('#screen'),
 	  queryStr = '',
 	  equalsButton = $('#equals'),
 	  ceButton = $('#ce'),
-    screenVal = '';
+    screenVal = '',
+    onOff = $('#on-off');
 
 // functions
 // construct query
@@ -46,46 +47,69 @@ function resetQuery() {
   query = [];
 }
 
-
 // program
-// get button value on click
-numberButton.on('click', function() {
-  inputValue = $(this).data('val');
-  query.push(inputValue);
+// on/off button
+onOff.on('click', function() {
+  onOff.toggleClass('active');
+  screen.toggleClass('active');
 
-  // construct query
-  constructQuery();
+  // if powered on
+  if ( onOff.hasClass('active') ) {
+    // run main program
+    main();
+  } else {
+    numberButton.unbind(); // unbind number click event
+    screen.text(''); // reset screen text
+    resetQuery(); // reset query
+  }
 });
 
-// get key pressed
-document.onkeypress = function(evt) {
-  evt = evt || window.event;
-  var charCode = evt.keyCode || evt.which;
-  var inputValue = String.fromCharCode(charCode);
 
-  // create an array of allowed keys
-  var allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*'];
+function main() {
+  // set screen text to 0
+  screen.text('0');
 
-  // push to array if in allowedKeys
-  if ( allowedKeys.indexOf(inputValue) > -1 ) {
-    query.push(inputValue);
-  }
+  // get button value on click
+  numberButton.on('click', function() {
+    if ( onOff.hasClass('active') ) {
+      inputValue = $(this).data('val');
+      query.push(inputValue);
 
-  // if is return or =
-  if ( charCode == '13' || charCode == '61' ) {
+      // construct query
+      constructQuery();
+    }
+  });
+
+  // get key pressed
+  document.onkeypress = function(evt) {
+    evt = evt || window.event;
+    var charCode = evt.keyCode || evt.which;
+    var inputValue = String.fromCharCode(charCode);
+
+    // create an array of allowed keys
+    var allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*'];
+
+    // push to array if in allowedKeys
+    if ( allowedKeys.indexOf(inputValue) > -1 ) {
+      query.push(inputValue);
+    }
+
+    // if is return or =
+    if ( charCode == '13' || charCode == '61' ) {
+      displayTotal();
+    }
+
+    // construct query
+    constructQuery();
+  };
+
+  // equals button on click
+  equalsButton.on('click', function() {
     displayTotal();
-  }
+  });
 
-  // construct query
-  constructQuery();
-};
-
-// equals button on click
-equalsButton.on('click', function() {
-  displayTotal();
-});
-
-// ce button on click
-ceButton.on('click', function() {
-  resetQuery();
-});
+  // ce button on click
+  ceButton.on('click', function() {
+    resetQuery();
+  });
+}

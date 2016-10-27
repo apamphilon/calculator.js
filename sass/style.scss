@@ -50,8 +50,11 @@ body {
 	text-align: right;
   overflow: hidden;
   overflow-x: auto;
-  background: #a6de54;
   border-radius: 4px;
+  background-color: #484848;
+  &.active {
+    background-color: #a6de54;
+  }
 }
 
 .btn-wrapper {
@@ -75,9 +78,10 @@ button {
   }
 }
 
-#ce {
+#on-off {
   position: relative;
-  right: -273px;
+  top: -3px;
+  font-size: 16px;
 }
 
 p {
